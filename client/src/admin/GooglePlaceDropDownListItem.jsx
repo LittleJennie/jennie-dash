@@ -1,8 +1,8 @@
 import React from 'react';
 
-const GooglePlaceDropDownListItem = ({ place }) => {
+const GooglePlaceDropDownListItem = ({ place, completeRestaurantForm}) => {
   return (
-    <div>
+    <div onClick={e => {completeRestaurantForm(e, place.description)}}>
       {place.description}
     </div>
   );
