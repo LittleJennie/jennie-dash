@@ -8,10 +8,10 @@ class CreateOrder extends React.Component {
     super();
     this.state = {
       restaurant: '',
-      restaurantAdd: '',
       date: moment(),
       time: moment().format('LT'),
       GooglePlaceList: [],
+      yelpList: '',
       yelp: '',
     }
 
@@ -41,16 +41,30 @@ class CreateOrder extends React.Component {
     });
   }
 
-  completeRestaurantForm(e, selection) {
+  completeRestaurantForm(e, selectedFull, selectedName) {
     e.preventDefault();
     this.setState({ 
-      restaurant: selection,
+      restaurant: selectedFull,
       GooglePlaceList: [],
+      yelp: selectedName,
+    }, async () => {
+      const yelpList = await helperFunctions.fetchYelpBusinesses(this.state.yelp);
+
+      try {
+        console.log(yelpList)
+        this.setState({ yelpList });
+      } catch (err) {
+        console.log(err);
+      }
     });
   }
 
-  fetchYelp(restaurant) {
-    return;
+  selectYelp(e, selection) {
+    e.preventDefault();
+    this.setState({
+      yelp: selection,
+      yelpList: [],
+    });
   }
 
   render() {
@@ -59,6 +73,7 @@ class CreateOrder extends React.Component {
       date,
       time,
       GooglePlaceList,
+      yelpList,
     } = this.state;
 
     return(
@@ -95,6 +110,16 @@ class CreateOrder extends React.Component {
               )
             }
           </div>
+          {
+            yelpList.length === 0 ?
+            false :
+            (
+              <GooglePlaceDropDownList 
+                places={yelpList}
+                completeRestaurantForm={this.selectYelp}
+              />
+            )
+          }
         </form>
       </div>
     )
