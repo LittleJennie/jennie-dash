@@ -9,14 +9,14 @@ const GooglePlaceDropDownListItem = ({ place, completeRestaurantForm, isGoogle }
       </div>
     ) :
     (
-      <div onClick={e => {completeRestaurantForm(e, place.description, place.structured_formatting.main_text)}}>
+      <div onClick={e => {completeRestaurantForm(e, place.name, place.url, place.coordinates.latitude, place.coordinates.longitude)}}>
         <div>
           {place.name}
         </div>
         <div>
-          {place.url}
+          <img src={place.image_url} alt={`${place.name} thumbnail image`} height="60" width="60" />
         </div>
-      </div>      
+      </div>
     )
   );
 };

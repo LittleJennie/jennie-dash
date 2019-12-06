@@ -13,11 +13,15 @@ class CreateOrder extends React.Component {
       GooglePlaceList: [],
       yelpList: '',
       yelp: '',
+      yelpUrl: '',
+      yelpLat: 0,
+      yelpLong: 0,
     }
 
     this.updateTime = this.updateTime.bind(this);
     this.updateRestaurant = this.updateRestaurant.bind(this);
     this.completeRestaurantForm = this.completeRestaurantForm.bind(this);
+    this.selectYelp = this.selectYelp.bind(this);
   }
 
   updateTime(e) {
@@ -59,10 +63,13 @@ class CreateOrder extends React.Component {
     });
   }
 
-  selectYelp(e, selection) {
+  selectYelp(e, s, sUrl, sLat, sLong) {
     e.preventDefault();
     this.setState({
-      yelp: selection,
+      yelp: s,
+      yelpUrl: sUrl,
+      yelpLat: sLat,
+      yelpLong: sLong,
       yelpList: [],
     });
   }
@@ -74,6 +81,7 @@ class CreateOrder extends React.Component {
       time,
       GooglePlaceList,
       yelpList,
+      yelp,
     } = this.state;
 
     return(
@@ -113,7 +121,11 @@ class CreateOrder extends React.Component {
           </div>
           {
             yelpList.length === 0 ?
-            false :
+            (
+              <div>
+                Yelp Selection: {yelp}
+              </div>
+            ) :
             (
               <GooglePlaceDropDownList 
                 places={yelpList}
