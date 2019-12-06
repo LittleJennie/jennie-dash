@@ -105,6 +105,7 @@ class CreateOrder extends React.Component {
               (
                 <GooglePlaceDropDownList 
                   places={GooglePlaceList}
+                  isGoogle='true'
                   completeRestaurantForm={this.completeRestaurantForm}
                 />
               )
@@ -116,6 +117,7 @@ class CreateOrder extends React.Component {
             (
               <GooglePlaceDropDownList 
                 places={yelpList}
+                isGoogle='false'
                 completeRestaurantForm={this.selectYelp}
               />
             )
