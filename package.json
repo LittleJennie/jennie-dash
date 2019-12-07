@@ -1,0 +1,44 @@
+{
+  "name": "jennie-dash",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -d --watch",
+    "start": "nodemon ./server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LittleJennie/jennie-dash.git"
+  },
+  "author": "Jennie Zeng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LittleJennie/jennie-dash/issues"
+  },
+  "homepage": "https://github.com/LittleJennie/jennie-dash#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.7.2",
+    "axios": "^0.19.0",
+    "cors": "^2.8.5",
+    "css-loader": "^3.2.0",
+    "express": "^4.17.1",
+    "moment": "^2.24.0",
+    "morgan": "^1.9.1",
+    "path": "^0.12.7",
+    "pg": "^7.12.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "style-loader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
